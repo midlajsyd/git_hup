@@ -1,0 +1,501 @@
+[5/7/2026 10:24 PM] Sayyid Midlaj: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nature — A Living World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+
+    /* ════════════════════════════════════════════
+       4. UNIVERSAL SELECTOR
+       ════════════════════════════════════════════ */
+    * {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ink:       #0d1f0e;
+      --forest:    #1a3a1c;
+      --moss:      #2e5c32;
+      --fern:      #4a8c50;
+      --sage:      #8cb88f;
+      --mist:      #c8ddc9;
+      --cream:     #f0ece0;
+      --gold:      #c8a84b;
+      --highlight: #e8ff6e;
+    }
+
+    /* ════════════════════════════════════════════
+       7a. LINEAR GRADIENT BODY
+       ════════════════════════════════════════════ */
+    body {
+      background: linear-gradient(175deg,
+        #0a1a0b 0%,
+        #0f2610 30%,
+        #152d16 60%,
+        #0a1a0b 100%);
+      min-height: 100vh;
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ════════════════════════════════════════════
+       5. GROUP SELECTOR — h1, h2, p share base color
+       ════════════════════════════════════════════ */
+    h1, h2, p {
+      color: var(--cream);
+    }
+
+    /* ════════════════════════════════════════════
+       1a. TYPE SELECTOR — h1 color
+       ════════════════════════════════════════════ */
+    h1 {
+      color: #e8ffea;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 300;
+      letter-spacing: -2px;
+      line-height: 0.95;
+    }
+
+    /* ════════════════════════════════════════════
+       1b. TYPE SELECTOR — p font-size
+       ════════════════════════════════════════════ */
+    p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes drawLine {
+      from { width: 0; }
+      to   { width: 60px; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(-50%) translateX(0); }
+      50%       { transform: translateY(-58%) translateX(-4px); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(74,140,80,0.12) 0%, transparent 70%);
+      top: -150px; right: -150px;
+    }
+    body::after {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(46,92,50,0.15) 0%, transparent 70%);
+      bottom: 0; left: -100px;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 7rem 0 5rem;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 0;
+      background: var(--sage);
+      animation: drawLine 1.4s ease 0.5s forwards;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      max-width: 520px;
+      color: var(--mist);
+      font-size: 1.1rem;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+[5/7/2026 10:24 PM] Sayyid Midlaj: .hero-divider {
+      margin: 3.5rem 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--moss), transparent);
+    }
+
+    /* ── SECTION CARDS ── */
+    .section {
+      margin-bottom: 3rem;
+      padding: 2.8rem 3rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.9s ease both;
+    }
+    .section:nth-child(2) { animation-delay: 0.15s; }
+    .section:nth-child(3) { animation-delay: 0.25s; }
+    .section:nth-child(4) { animation-delay: 0.35s; }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--fern), transparent);
+    }
+
+    .section-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fern);
+      margin-bottom: 0.5rem;
+      opacity: 0.7;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #d6f5d8;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+
+    /* ════════════════════════════════════════════
+       2. ID SELECTOR
+       ════════════════════════════════════════════ */
+    #forest-heading {
+      background-color: var(--forest);
+      color: var(--highlight) !important;
+      display: inline-block;
+      padding: 0.25rem 1rem 0.35rem;
+      border-radius: 2px;
+      font-size: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      border: 1px solid rgba(200,255,100,0.2);
+      box-shadow: 0 0 30px rgba(200,255,100,0.08);
+    }
+
+    /* ════════════════════════════════════════════
+       3. CLASS SELECTOR — .nature-fact
+       ════════════════════════════════════════════ */
+    .nature-fact {
+      color: #c8f5ca;
+      background-color: rgba(46, 92, 50, 0.45);
+      padding: 1.1rem 1.4rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      border: 1px solid rgba(138,184,143,0.2);
+      font-size: 1rem;
+      position: relative;
+    }
+    .nature-fact::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.5rem;
+      position: absolute;
+      top: 1.3rem; left: -0.9rem;
+    }
+
+    /* ════════════════════════════════════════════
+       7b. SPAN HIGHLIGHT
+       ════════════════════════════════════════════ */
+    .highlight {
+      background-color: var(--highlight);
+      color: #0d1f0e;
+      padding: 0.05rem 0.35rem;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+
+    .leaf-deco {
+      position: absolute;
+      right: 2.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 5rem;
+      opacity: 0.06;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+      user-select: none;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .stat { border-top: 1px solid rgba(138,184,143,0.25); padding-top: 1rem; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--sage); letter-spacing: 0.08em; margin-top: 0.3rem; }
+
+    /* ── FORM ── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 500;
+    }
+[5/7/2026 10:24 PM] Sayyid Midlaj: /* ════════════════════════════════════════════
+       6. ATTRIBUTE SELECTOR — input[type="text"]
+       ════════════════════════════════════════════ */
+    input[type="text"] {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(138,184,143,0.35);
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+    input[type="text"]::placeholder { color: rgba(200,220,200,0.35); }
+    input[type="text"]:focus {
+      border-color: var(--fern);
+      background: rgba(74,140,80,0.12);
+      box-shadow: 0 0 0 3px rgba(74,140,80,0.15);
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      color: rgba(200,220,200,0.45);
+      outline: none;
+    }
+
+    .field-note { font-size: 0.72rem; color: var(--sage); opacity: 0.55; margin-top: 0.2rem; }
+
+    /* ════════════════════════════════════════════
+       7c. BUTTON WITH HOVER EFFECT
+       ════════════════════════════════════════════ */
+    .btn-nature {
+      margin-top: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2.4rem;
+      background: linear-gradient(135deg, var(--moss), var(--fern));
+      color: #e8ffea;
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(46,92,50,0.4);
+    }
+    .btn-nature::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+      background-size: 200% 100%;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-nature:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 14px 40px rgba(46,92,50,0.55);
+    }
+    .btn-nature:hover::after {
+      opacity: 1;
+      animation: shimmer 0.7s ease forwards;
+    }
+    .btn-arrow { font-size: 1rem; transition: transform 0.3s; display: inline-block; }
+    .btn-nature:hover .btn-arrow { transform: translateX(4px); }
+
+    footer {
+      text-align: center;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      margin-top: 1rem;
+    }
+    footer p {
+      font-size: 0.78rem;
+      color: rgba(200,221,201,0.35);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 2rem 1.5rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .leaf-deco { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hero-eyebrow">A Living World</p>
+    <h1>The Silent<br><em>Grammar</em><br>of Nature</h1>
+    <p class="hero-sub">
+      Forests breathe. Oceans remember. Mountains keep secrets
+      older than language. Step into the world that existed before us.
+    </p>
+    <div class="hero-divider"></div>
+  </header>
+
+  <!-- SECTION 1: Forests -->
+  <div class="section">
+    <div class="leaf-deco">🌿</div>
+    <p class="section-num">01 — Forests</p>
+    <!-- 2. ID SELECTOR -->
+    <h2 id="forest-heading">Forests</h2>
+    <p>
+      Forests cover <span class="highlight">31% of Earth's land surface</span> and
+[5/7/2026 10:24 PM] Sayyid Midlaj: harbour more than 80% of all terrestrial species. They are not merely collections
+      of trees — they are vast, interconnected intelligences communicating through
+      fungal networks beneath the soil.
+    </p>
+    <!-- 3. CLASS SELECTOR — two paragraphs with same class -->
+    <p class="nature-fact">
+      A single mature oak can support over 500 species of insects, birds, and fungi.
+      Remove one oak, and an entire micro-ecosystem collapses silently.
+    </p>
+    <p class="nature-fact">
+      The Amazon generates its own rainfall through "flying rivers" — atmospheric streams
+      carrying more water than the Amazon River itself flows above the canopy.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">4.1B</div>
+        <div class="stat-label">Hectares of forest worldwide</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">80%</div>
+        <div class="stat-label">Of land species live here</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">48lbs</div>
+        <div class="stat-label">CO₂ absorbed per tree/year</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Oceans -->
+  <div class="section">
+    <div class="leaf-deco">🌊</div>
+    <p class="section-num">02 — Oceans</p>
+    <h2>Oceans</h2>
+    <p>
+      The ocean covers more than 70% of the planet's surface. Its depths remain less
+      explored than the surface of Mars —
+      <span class="highlight">95% of the ocean is still unseen</span> by human eyes.
+      It regulates our climate, absorbs our excess heat, and exhales half our oxygen.
+    </p>
+    <p style="margin-top:1.1rem; color:var(--mist);">
+      Blue whales communicate through infrasound at frequencies so low they travel
+      thousands of kilometres through open water — a language older than humanity itself.
+    </p>
+  </div>
+
+  <!-- SECTION 3: Form -->
+  <div class="section">
+    <p class="section-num">03 — Connect</p>
+    <h2>Share Your World</h2>
+    <p style="color:var(--mist);">Tell us your favourite place in nature. We read every message.</p>
+
+    <div class="form-grid">
+      <!-- 6. ATTRIBUTE SELECTOR styles input[type="text"] -->
+      <div class="field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="e.g. Arjun Menon"/>
+      </div>
+      <div class="field">
+        <label for="spot">Favourite Nature Spot</label>
+        <input type="text" id="spot" placeholder="e.g. Silent Valley, Kerala"/>
+      </div>
+      <!-- email is intentionally NOT styled by input[type="text"] -->
+      <div class="field full">
+        <label for="email">Email <span style="opacity:0.4;font-size:0.65rem;">(not input[type="text"] — unstyled)</span></label>
+        <input type="email" id="email" placeholder="you@example.com"/>
+        <span class="field-note">↑ Only text inputs get the green border via the attribute selector.</span>
+      </div>
+    </div>
+
+    <!-- 7c. BUTTON WITH HOVER -->
+    <button class="btn-nature">
+      Send Message <span class="btn-arrow">→</span>
+    </button>
+  </div>
+
+  <footer>
+    <p>CSS Selectors Homework &nbsp;·&nbsp; Nature Edition</p>
+  </footer>
+
+</div>
+</body>
+</html>
